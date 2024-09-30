@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <T Include="a;b;c;d" />
+  </ItemGroup>
+
+  <Target Name="_T" BeforeTargets="Build">
+    <ItemGroup>
+      <T>
+        <M>default data</M>
+        <M Condition="'%(T.M)' == 'default data'">new default</M>
+      </T>
+    </ItemGroup>
+
+    <Warning Text="%(T.Identity): %(T.M)" />
+  </Target>
+
+</Project>
